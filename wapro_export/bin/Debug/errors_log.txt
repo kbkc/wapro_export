@@ -1,0 +1,213 @@
+
+
+21.07.2017 14:19:03
+System.InvalidOperationException: Эта операция создаст документ с неправильной структурой.
+   в System.Xml.Linq.XDocument.ValidateDocument(XNode previous, XmlNodeType allowBefore, XmlNodeType allowAfter)
+   в System.Xml.Linq.XDocument.ValidateNode(XNode node, XNode previous)
+   в System.Xml.Linq.XContainer.AddNodeSkipNotify(XNode n)
+   в System.Xml.Linq.XContainer.AddContentSkipNotify(Object content)
+   в System.Xml.Linq.XContainer.Add(Object content)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, XDocument xd) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 197
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 181
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 169
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 119
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 44
+
+21.07.2017 14:26:22
+System.InvalidOperationException: Эта операция создаст документ с неправильной структурой.
+   в System.Xml.Linq.XDocument.ValidateDocument(XNode previous, XmlNodeType allowBefore, XmlNodeType allowAfter)
+   в System.Xml.Linq.XDocument.ValidateNode(XNode node, XNode previous)
+   в System.Xml.Linq.XContainer.AddNodeSkipNotify(XNode n)
+   в System.Xml.Linq.XContainer.AddContentSkipNotify(Object content)
+   в System.Xml.Linq.XContainer.Add(Object content)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, XDocument xd) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 201
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 181
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 169
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 119
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 44
+
+21.07.2017 15:22:49
+System.InvalidOperationException: Эта операция создаст документ с неправильной структурой.
+   в System.Xml.Linq.XDocument.ValidateDocument(XNode previous, XmlNodeType allowBefore, XmlNodeType allowAfter)
+   в System.Xml.Linq.XDocument.ValidateNode(XNode node, XNode previous)
+   в System.Xml.Linq.XContainer.AddNodeSkipNotify(XNode n)
+   в System.Xml.Linq.XContainer.AddContentSkipNotify(Object content)
+   в System.Xml.Linq.XContainer.Add(Object content)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, XDocument xd, XElement el) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 204
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 182
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 169
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 119
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 44
+
+21.07.2017 15:56:37
+System.TypeInitializationException: Инициализатор типа "wapro_export.CfgRead" выдал исключение. ---> System.Xml.XmlException: Открывающий тег "s" в позиции 8 строки 63 не соответствует закрывающему тегу "param"., строка 65, позиция 7.
+   в System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   в System.Xml.XmlTextReaderImpl.Throw(String res, String[] args)
+   в System.Xml.XmlTextReaderImpl.ThrowTagMismatch(NodeData startTag)
+   в System.Xml.XmlTextReaderImpl.ParseEndElement()
+   в System.Xml.XmlTextReaderImpl.ParseElementContent()
+   в System.Xml.XmlTextReaderImpl.Read()
+   в System.Xml.Linq.XContainer.ReadContentFrom(XmlReader r)
+   в System.Xml.Linq.XContainer.ReadContentFrom(XmlReader r, LoadOptions o)
+   в System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   в System.Xml.Linq.XDocument.Load(String uri, LoadOptions options)
+   в System.Xml.Linq.XDocument.Load(String uri)
+   в wapro_export.CfgRead..cctor() в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 49
+   --- Конец трассировки внутреннего стека исключений ---
+   в wapro_export.CfgRead.mess(String s)
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 31
+
+22.07.2017 11:24:14
+System.ArgumentException: Не удается добавить в содержимое знаки, отличные от пробела.
+   в System.Xml.Linq.XDocument.ValidateString(String s)
+   в System.Xml.Linq.XContainer.AddStringSkipNotify(String s)
+   в System.Xml.Linq.XContainer.AddContentSkipNotify(Object content)
+   в System.Xml.Linq.XContainer.Add(Object content)
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 189
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 171
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 119
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 44
+
+26.07.2017 17:32:05
+System.ArgumentOutOfRangeException: Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
+   в System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   в System.Collections.Generic.List`1.get_Item(Int32 index)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, String sub_node, String sub_sub_node) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 238
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 197
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 180
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 110
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+26.07.2017 17:37:17
+System.ArgumentOutOfRangeException: Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
+   в System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   в System.Collections.Generic.List`1.get_Item(Int32 index)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, String sub_node, String sub_sub_node) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 240
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 198
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 180
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 110
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+26.07.2017 17:40:27
+System.ArgumentOutOfRangeException: Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
+   в System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   в System.Collections.Generic.List`1.get_Item(Int32 index)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, String sub_node, String sub_sub_node) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 240
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 198
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 180
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 110
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+26.07.2017 17:42:16
+System.ArgumentOutOfRangeException: Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
+   в System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   в System.Collections.Generic.List`1.get_Item(Int32 index)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, String sub_node, String sub_sub_node) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 241
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 198
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 180
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 110
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+26.07.2017 17:43:02
+System.ArgumentOutOfRangeException: Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
+   в System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   в System.Collections.Generic.List`1.get_Item(Int32 index)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, String sub_node, String sub_sub_node) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 241
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 198
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 180
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 110
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+26.07.2017 17:43:32
+System.ArgumentOutOfRangeException: Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
+   в System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   в System.Collections.Generic.List`1.get_Item(Int32 index)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, String sub_node, String sub_sub_node) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 241
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 198
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 180
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 110
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+26.07.2017 17:44:09
+System.ArgumentOutOfRangeException: Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
+   в System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   в System.Collections.Generic.List`1.get_Item(Int32 index)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, String sub_node, String sub_sub_node) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 241
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 198
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 180
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 110
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+26.07.2017 17:44:23
+System.ArgumentOutOfRangeException: Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
+   в System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   в System.Collections.Generic.List`1.get_Item(Int32 index)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, String sub_node, String sub_sub_node) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 241
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 198
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 180
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 110
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+26.07.2017 17:45:41
+System.ArgumentOutOfRangeException: Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
+   в System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   в System.Collections.Generic.List`1.get_Item(Int32 index)
+   в wapro_export.CfgRead.create_xml_branche(List`1 head_list, List`1 llist, String sub_node, String sub_sub_node) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 241
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 198
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 180
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 110
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+26.07.2017 17:52:24
+System.InvalidOperationException: Родительский элемент отсутствует.
+   в System.Xml.Linq.XNode.AddAfterSelf(Object content)
+   в wapro_export.CfgRead.create_xml(List`1 llist) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 196
+   в wapro_export.CfgRead.split_double_list(List`1 llist, String file_export_type) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 180
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 110
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+03.03.2018 16:04:24
+System.IO.IOException: Устройство не готово.
+
+   в System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   в System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   в System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   в System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   в System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   в System.IO.File.InternalWriteAllText(String path, String contents, Encoding encoding, Boolean checkHost)
+   в System.IO.File.WriteAllText(String path, String contents)
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 161
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 37
+
+03.03.2018 16:07:21
+System.Exception: Mail.Send: Сбой при отправке сообщения электронной почты.
+   в wapro_export.CfgRead.do_mail_block() в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\classes.cs:строка 324
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\wapro_export\wapro_export\Program.cs:строка 42
+
+05.03.2018 15:00:21
+System.ArgumentOutOfRangeException: Индекс за пределами диапазона. Индекс должен быть положительным числом, а его размер не должен превышать размер коллекции.
+Имя параметра: index
+   в System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   в System.Collections.Generic.List`1.get_Item(Int32 index)
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\_working_projects\wapro_export\wapro_export\Program.cs:строка 179
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\_working_projects\wapro_export\wapro_export\Program.cs:строка 37
+
+06.03.2018 14:15:31
+System.FormatException: Недопустимая длина строки или массива знаков Base-64.
+   в System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   в System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   в System.Convert.FromBase64String(String s)
+   в wapro_export.CfgRead.Decrypt(String cipherText) в C:\Users\mposo\Documents\MEGAsync\_Dev\_working_projects\wapro_export\wapro_export\classes.cs:строка 115
+   в wapro_export.CfgRead.<>c.<.cctor>b__21_0(XElement c) в C:\Users\mposo\Documents\MEGAsync\_Dev\_working_projects\wapro_export\wapro_export\classes.cs:строка 61
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в wapro_export.Program.run_queries_from_cfg(Int32 flag) в C:\Users\mposo\Documents\MEGAsync\_Dev\_working_projects\wapro_export\wapro_export\Program.cs:строка 83
+   в wapro_export.Program.Main(String[] args) в C:\Users\mposo\Documents\MEGAsync\_Dev\_working_projects\wapro_export\wapro_export\Program.cs:строка 39

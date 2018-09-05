@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DBS>
+  <use_mail_node>maildatassl</use_mail_node>
+  <!-- if true - show all mesages  like  CfgRead.mess('Hello.....'); -->
+  <show_addon_messages>false</show_addon_messages>
+  <!-- start_arg01=1 - get data from WAPRO and write it to MySQL -->
+  <!-- start_arg01=2 - get data from MySQL and write it to .csv -->
+  <start_arg01>1</start_arg01>
+  <send_mail_on_error>true</send_mail_on_error>
+  <send_mail_on_success>false</send_mail_on_success>
+  <send_mail_on_error_to>mposohov@gmail.com</send_mail_on_error_to>
+  <csv_source_ffn>d:\inetpub\ftproot\out\rest.csv</csv_source_ffn>
+  <!-- <csv_out_dir>D:\Bases_1C\Reforma\wapro_imp\</csv_out_dir> -->
+  <csv_out_dir>D:\</csv_out_dir>
+  <send_mail_on_error_to>mposohov@gmail.com</send_mail_on_error_to>
+  <db_conf>
+    <id>1</id>
+    <type>mssql</type>
+	<file_export_type>csv</file_export_type>
+    <label>fs01</label>
+	<!-- <conn_str>Server=REFORMA-;Database=WAPRO;User Id=saa; Password ={0};</conn_str> 
+	<conn_str_pass>cYdCJtOUIu7vjJ3ajBJ9Xw==</conn_str_pass>
+	-->
+    <conn_str>Server=192.168.1.36;Database=WAPRO;User Id=sa; Password ={0};</conn_str>
+    <conn_str_pass>NTYq2pi2jpvKsRFHzRbqczAFpwqv9gFVkjOUnrqUYQA=</conn_str_pass>
+    <qu>
+      <s>SELECT h.ID_DOKUMENTU_HANDLOWEGO
+			FROM DOKUMENT_HANDLOWY AS h
+			WHERE h.ID_TYPU IN (1,6) 
+			AND h.ID_DOKUMENTU_HANDLOWEGO &gt; {0} 
+			ORDER BY h.ID_DOKUMENTU_HANDLOWEGO ASC;
+		</s>
+      <s>SELECT 
+			h.ID_PLATNIKA, h.ID_DOKUMENTU_HANDLOWEGO, h.NUMER
+			, FORMAT(cast(h.DATA_WYSTAWIENIA - 36163 as datetime),'yyyy-MM-dd') AS DATA_WYSTAWIENIA
+			, h.FORMA_PLATNOSCI 
+			,FORMAT(cast(h.TERMIN_PLAT - 36163 as datetime),'yyyy-MM-dd') AS TERMIN_PLAT
+			, h.UWAGI, h.PLATNIK_NAZWA, k.NIP, k.KOD_POCZTOWY 
+			, k.MIEJSCOWOSC, k.ULICA_LOKAL, h.WARTOSC_NETTO, h.WARTOSC_BRUTTO 
+			FROM DOKUMENT_HANDLOWY AS h 
+			INNER JOIN KONTRAHENT AS k ON h.ID_PLATNIKA = k.ID_KONTRAHENTA 
+			WHERE h.ID_TYPU IN (1,6,10) AND h.ID_DOKUMENTU_HANDLOWEGO = {0};
+			</s>
+      <s>SELECT 
+			h.NUMER
+			, aa.INDEKS_KATALOGOWY
+			, aa.NAZWA
+			, pm.ILOSC
+			, pm.CENA_BRUTTO
+			, pm.CENA_NETTO
+			FROM POZYCJA_DOKUMENTU_MAGAZYNOWEGO AS pm
+			INNER JOIN ARTYKUL AS aa ON aa.ID_ARTYKULU = pm.ID_ARTYKULU
+			INNER JOIN DOKUMENT_MAGAZYNOWY AS h ON h.ID_DOK_MAGAZYNOWEGO = pm.ID_DOK_MAGAZYNOWEGO
+			WHERE pm.ID_DOK_HANDLOWEGO =  {0}
+		;
+		</s>
+    </qu>
+    <param>
+      <s>324</s>
+      <s>para2</s>
+    </param>
+  </db_conf>
+  <db_conf>
+    <id>2</id>
+    <type>mysql</type>
+	<file_export_type>csv</file_export_type>
+    <label>fs01</label>
+    <conn_str>Server=192.254.233.102; Database=refshop__workdb;user=refshop_mike;password='{0}';port=3306;</conn_str>
+    <conn_str_pass>12UCN/t7ztZlV2VHfOmTu4T8lFC1Gv4aMMU3tBeqnGM=</conn_str_pass>
+    <qu>
+      <s>TTT TRUNCATE wapro_doc;</s>
+      <s>INSERT INTO wapro_doc (file_name, file_data, id_plat,id_doc_handl) VALUES ('{0}','{1}',{2},{3});</s>
+      <s>mysql3</s>
+    </qu>
+    <param>
+      <s>3</s>
+      <s>para2</s>
+    </param>
+  </db_conf>
+  <db_conf>
+    <id>3</id>
+    <type>mysql</type>
+	<file_export_type>csv</file_export_type>
+    <label>fs01</label>
+    <conn_str>Server=192.254.233.102; Database=refshop__workdb;user=refshop_mike;password='{0}';port=3306;</conn_str>
+    <conn_str_pass>12UCN/t7ztZlV2VHfOmTu4T8lFC1Gv4aMMU3tBeqnGM=</conn_str_pass>
+    <qu>
+      <s>SELECT w.* FROM wapro_doc AS w WHERE w.id &gt; {0} ORDER BY w.id ASC;</s>
+      <s>SELECT w.* FROM wapro_doc AS w ;</s>
+      <s>mysql3</s>
+    </qu>
+    <param>
+      <s>56</s>
+      <s>para2</s>
+    </param>
+  </db_conf>
+  <maildata>
+    <pop>mail.reformnails.com</pop>
+    <smtp>mail.reformnails.com</smtp>
+    <pop_port>110</pop_port>
+    <smtp_port>25</smtp_port>
+    <user>mp@reformnails.com</user>
+    <pass>S/Mqp3Hv4NcYD9XMwyCPCA==</pass>
+    <enablessl>false</enablessl>
+  </maildata>
+  <maildatassl>
+    <pop>gator3218.hostgator.com</pop>
+    <smtp>gator3218.hostgator.com</smtp>
+    <pop_port>995</pop_port>
+    <smtp_port>587</smtp_port>
+    <user>mp@reformnails.com</user>
+    <pass>S/Mqp3Hv4NcYD9XMwyCPCA==</pass>
+    <enablessl>true</enablessl>
+  </maildatassl>
+  <!--  is_pass_encrypted - if true - use encrypted 'conn_str_pass' -->
+  <is_pass_encrypted>true</is_pass_encrypted>
+  <ek>MAKV2SPBNI99212</ek>
+</DBS>

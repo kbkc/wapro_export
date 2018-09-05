@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DBS>
+  <use_mail_node>maildatassl</use_mail_node>
+  <!-- if true - show all mesages  like  CfgRead.mess('Hello.....'); -->
+  <show_addon_messages>false</show_addon_messages>
+  <!-- start_arg01=1 - get data from WAPRO (and write it to MySQL) -->
+  <!-- start_arg01=2 - put data to .csv(.xml) (from MySQL)  -->
+  <!-- start_arg01=3 - stock from wapro to webshop  -->
+   <!-- start_arg01=4 - stock from rest.csv to webshop  -->
+  <start_arg01>3</start_arg01>
+  <send_mail_on_error>false</send_mail_on_error>
+  <send_mail_on_success>false</send_mail_on_success>
+  <send_mail_on_error_to>mposohov@gmail.com</send_mail_on_error_to>
+  <csv_source_ffn>.\\rest.csv</csv_source_ffn>
+  <!-- <csv_source_ffn>.\\rest.csv</csv_source_ffn> --> <!-- if rest.csv in application folder -->
+  <!-- <csv_out_dir>D:\Bases_1C\Reforma\wapro_imp\</csv_out_dir> -->
+  <!-- <file_export_dir>e:\NextcloudAdm\users\_mike\1s\order_import\xml\</file_export_dir> -->
+  <file_export_dir>d:\</file_export_dir>
+  <!-- m.b. 'csv' or 'xml' -->
+  <file_export_type>xml</file_export_type>
+  <!-- may be 'ru' or 'en' -->
+  <fields_naming_lang>ru</fields_naming_lang>
+  <send_mail_on_error_to>mposohov@gmail.com</send_mail_on_error_to>
+  <db_conf>
+    <id>1</id>
+    <type>mssql</type>
+    <label>fs01</label>
+    <!-- <conn_str>Server=REFORMA-;Database=WAPRO;User Id=saa; Password ={0};</conn_str> 
+	<conn_str_pass>cYdCJtOUIu7vjJ3ajBJ9Xw==</conn_str_pass>
+	-->
+    <!--
+    <conn_str>Server=192.168.1.36;Database=WAPRO;User Id=sa; Password ={0};</conn_str>
+    <conn_str_pass>NTYq2pi2jpvKsRFHzRbqczAFpwqv9gFVkjOUnrqUYQA=</conn_str_pass>
+
+    <conn_str>Server=ST\SQL_2016_STD;Database=WAPRO;User Id=sa; Password ={0};</conn_str>
+    <conn_str_pass>cYdCJtOUIu7vjJ3ajBJ9Xw==</conn_str_pass>
+	-->
+    <conn_str>Server=ST510;Database=WAPRO;User Id=sa; Password ={0};</conn_str>
+    <conn_str_pass>559QZHS46PiLxiyrIepaUQ==</conn_str_pass>
+    <qu>
+      <s>SELECT h.ID_DOKUMENTU_HANDLOWEGO
+			FROM DOKUMENT_HANDLOWY AS h
+			WHERE h.ID_TYPU IN (1,6,10,13) 
+			AND h.ID_DOKUMENTU_HANDLOWEGO &gt; {0} 
+			ORDER BY h.ID_DOKUMENTU_HANDLOWEGO ASC;
+		</s>
+      <s>   -- ATTENTION! don't reorder first 2 fields!
+	        SELECT h.ID_PLATNIKA, h.ID_DOKUMENTU_HANDLOWEGO, h.NUMER 
+	        , th.SYGNATURA,th.NAZWA,th.SUMOWANIE,h.ID_TYPU
+			, FORMAT(cast(h.DATA_WYSTAWIENIA - 36163 as datetime),'yyyy-MM-dd') AS DATA_WYSTAWIENIA
+			, h.FORMA_PLATNOSCI 
+			,FORMAT(cast(h.TERMIN_PLAT - 36163 as datetime),'yyyy-MM-dd') AS TERMIN_PLAT
+			, h.UWAGI
+			, h.WARTOSC_NETTO, h.WARTOSC_BRUTTO 
+			,h.WARTOSC_BRUTTO_WAL,h.SYM_WAL,h.PRZELICZNIK_WAL
+			 FROM DOKUMENT_HANDLOWY AS h 
+			 INNER JOIN KONTRAHENT AS k ON h.ID_PLATNIKA = k.ID_KONTRAHENTA 
+			 INNER JOIN TYP_DOKUMENTU_HANDLOWEGO AS th ON h.ID_TYPU = th.ID_TYPU 
+			 WHERE h.ID_TYPU IN (1,6,10,13) AND h.ID_DOKUMENTU_HANDLOWEGO = {0};
+			</s>
+      <s>   
+	        SELECT h.ID_PLATNIKA, h.PLATNIK_NAZWA, k.NIP
+			, k.ADRES_EMAIL,k.TELEFON_FIRMOWY,k.ADRES_WWW
+			, k.KOD_POCZTOWY, k.MIEJSCOWOSC, k.ULICA_LOKAL
+			 FROM DOKUMENT_HANDLOWY AS h 
+			 INNER JOIN KONTRAHENT AS k ON h.ID_PLATNIKA = k.ID_KONTRAHENTA 
+			 INNER JOIN TYP_DOKUMENTU_HANDLOWEGO AS th ON h.ID_TYPU = th.ID_TYPU 
+			 WHERE h.ID_TYPU IN (1,6,10,13) AND h.ID_DOKUMENTU_HANDLOWEGO = {0};
+			</s>
+      <s>SELECT 
+			h.NUMER
+			, aa.INDEKS_KATALOGOWY
+			, aa.NAZWA
+			, pm.ILOSC
+			, pm.CENA_BRUTTO
+			, pm.CENA_NETTO
+			FROM POZYCJA_DOKUMENTU_MAGAZYNOWEGO AS pm
+			INNER JOIN ARTYKUL AS aa ON aa.ID_ARTYKULU = pm.ID_ARTYKULU
+			INNER JOIN DOKUMENT_MAGAZYNOWY AS h ON h.ID_DOK_MAGAZYNOWEGO = pm.ID_DOK_MAGAZYNOWEGO
+			WHERE pm.ID_DOK_HANDLOWEGO =  {0} ;
+		</s>
+    </qu>
+    <param>
+      <s>23813</s>
+      <s>para2</s>
+    </param>
+  </db_conf>
+  <db_conf>
+    <id>2</id>
+    <type>mysql</type>
+    <label>fs01</label>
+    <conn_str>Server=192.254.233.102; Database=refshop__workdb;user=refshop_mike;password='{0}';port=3306;</conn_str>
+    <conn_str_pass>12UCN/t7ztZlV2VHfOmTu4T8lFC1Gv4aMMU3tBeqnGM=</conn_str_pass>
+    <qu>
+      <s>TTT TRUNCATE wapro_doc;</s>
+      <s>INSERT INTO wapro_doc (file_name, file_data, id_plat,id_doc_handl) VALUES ('{0}','{1}',{2},{3});</s>
+      <s>mysql3</s>
+    </qu>
+    <param>
+      <s>3</s>
+      <s>para2</s>
+    </param>
+  </db_conf>
+  <db_conf>
+    <id>3</id>
+    <type>mysql</type>
+    <file_export_type>csv</file_export_type>
+    <label>fs01</label>
+    <conn_str>Server=192.254.233.102; Database=refshop__workdb;user=refshop_mike;password='{0}';port=3306;</conn_str>
+    <conn_str_pass>12UCN/t7ztZlV2VHfOmTu4T8lFC1Gv4aMMU3tBeqnGM=</conn_str_pass>
+    <qu>
+      <s>SELECT w.* FROM wapro_doc AS w WHERE w.id &gt; {0} ORDER BY w.id ASC;</s>
+      <s>SELECT w.* FROM wapro_doc AS w ;</s>
+      <s>mysql3</s>
+    </qu>
+    <param>
+      <s>2928</s>
+      <s>para2</s>
+    </param>
+  </db_conf>
+
+
+  <db_conf>
+    <id>4</id>
+    <type>mssql</type>
+    <label>st510</label>
+    <!-- <conn_str>Server=REFORMA-;Database=WAPRO;User Id=saa; Password ={0};</conn_str> 
+	<conn_str_pass>cYdCJtOUIu7vjJ3ajBJ9Xw==</conn_str_pass>
+	-->
+    <!--
+    <conn_str>Server=192.168.1.36;Database=WAPRO;User Id=sa; Password ={0};</conn_str>
+    <conn_str_pass>NTYq2pi2jpvKsRFHzRbqczAFpwqv9gFVkjOUnrqUYQA=</conn_str_pass>
+
+    <conn_str>Server=ST\SQL_2016_STD;Database=WAPRO;User Id=sa; Password ={0};</conn_str>
+    <conn_str_pass>cYdCJtOUIu7vjJ3ajBJ9Xw==</conn_str_pass>
+	-->
+    <conn_str>Server=ST510;Database=WAPRO;User Id=sa; Password ={0};</conn_str>
+    <conn_str_pass>559QZHS46PiLxiyrIepaUQ==</conn_str_pass>
+    <qu>
+      <s>SELECT  s.INDEKS_KATALOGOWY AS art, CAST(CAST( s.STAN AS VARCHAR) AS FLOAT) as rest FROM ARTYKUL AS s WHERE s.ID_MAGAZYNU = 1;</s>
+    </qu>
+    <param>
+      <s></s>
+      <s></s>
+    </param>
+  </db_conf>
+
+  <db_conf>
+    <id>5</id>
+    <type>mysql</type>
+    <file_export_type>csv</file_export_type>
+    <label>fs01</label>
+    <!--   <conn_str>Server=192.254.233.102; Database=refshop__workdb;user=refshop_mike;password='{0}';port=3306;</conn_str>
+    <conn_str_pass>12UCN/t7ztZlV2VHfOmTu4T8lFC1Gv4aMMU3tBeqnGM=</conn_str_pass> -->
+    <conn_str>Server=109.73.232.148; Database=c1stcoll_refmg2_pl;user=c1stcoll_rmg2pl;password='{0}';port=3306;SslMode=none;</conn_str>
+    <conn_str_pass>njrY5Ce4HwEK2tLk/YbKgTyxWZjauU5D+U/syTAIxyE=</conn_str_pass>     
+    <qu>
+      <s>DROP TABLE IF EXISTS {0} ;</s>
+      <s>CREATE TABLE {0}(art VARCHAR (50),rest DECIMAL (7,2));</s>
+      <s>LOAD DATA LOCAL INFILE '{0}' INTO TABLE {1} FIELDS TERMINATED BY ';' LINES TERMINATED BY '\r\n' IGNORE 1 LINES (art, rest);</s>
+      <s>UPDATE cataloginventory_stock_item AS i, cataloginventory_stock_status AS s SET i.qty = 0, s.qty = 0;</s>
+     <s>  UPDATE cataloginventory_stock_item AS i, cataloginventory_stock_status AS s , catalog_product_entity AS p, {0} AS t  
+          SET i.qty = t.rest, s.qty = t.rest 
+          WHERE t.art = p.sku AND p.entity_id = i.product_id AND p.entity_id = s.product_id  ;
+    </s>
+    </qu>
+    <param>
+      <s>_tmp_rest_rest_01</s>
+      <s></s>
+    </param>
+  </db_conf>
+  
+  
+  
+  
+  
+  <maildata>
+    <pop>mail.reformnails.com</pop>
+    <smtp>mail.reformnails.com</smtp>
+    <pop_port>110</pop_port>
+    <smtp_port>25</smtp_port>
+    <user>mp@reformnails.com</user>
+    <pass>S/Mqp3Hv4NcYD9XMwyCPCA==</pass>
+    <enablessl>false</enablessl>
+  </maildata>
+  <maildatassl>
+    <pop>gator3218.hostgator.com</pop>
+    <smtp>gator3218.hostgator.com</smtp>
+    <pop_port>995</pop_port>
+    <smtp_port>587</smtp_port>
+    <user>mp@reformnails.com</user>
+    <pass>S/Mqp3Hv4NcYD9XMwyCPCA==</pass>
+    <enablessl>true</enablessl>
+  </maildatassl>
+  <!--  is_pass_encrypted - if true - use encrypted 'conn_str_pass' -->
+  <is_pass_encrypted>true</is_pass_encrypted>
+  <ek>MAKV2SPBNI99212</ek>
+</DBS>

@@ -1,0 +1,5 @@
+input string:
+aTc!BBLZowe
+
+encrypted string:
+njrY5Ce4HwEK2tLk/YbKgTyxWZjauU5D+U/syTAIxyE=

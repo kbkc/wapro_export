@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DBS>
+	<db_conf>
+	  <id>1</id>
+	  <type>mssql</type>
+	  <conn_str>Server=192.168.1.36;Database=WAPRO;User Id=sa; Password =Boxter1123;</conn_str>
+	  <qu>
+		<s0>qu1</s0>
+		<s1>qu2</s1>
+	  </qu>
+	  <param>
+		<s0>para1</s0>
+		<s1>para2</s1>
+	  </param>
+	</db_conf>
+	 <use_mail_node>maildatassl</use_mail_node>
+	  <send_mail_on_error>true</send_mail_on_error>
+	  <send_mail_on_success>true</send_mail_on_success>
+	  <send_mail_on_error_to>mposohov@gmail.com</send_mail_on_error_to>
+	  <csv_out_dir>d:\1</csv_out_dir>
+	<maildata>
+		<pop>mail.reformnails.com</pop>
+		<smtp>mail.reformnails.com</smtp>
+		<pop_port>110</pop_port>
+		<smtp_port>25</smtp_port>
+		<user>mp@reformnails.com</user>
+		<pass>23751j</pass>
+		<enablessl>false</enablessl>
+	  </maildata>
+	  <maildatassl>
+		<pop>gator3218.hostgator.com</pop>
+		<smtp>gator3218.hostgator.com</smtp>
+		<pop_port>995</pop_port>
+		<smtp_port>587</smtp_port>
+		<user>mp@reformnails.com</user>
+		<pass>23751j</pass>
+		<enablessl>true</enablessl>
+	  </maildatassl>
+</DBS>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DBS>
+  <use_mail_node>maildatassl</use_mail_node>
+  <show_addon_messages>true</show_addon_messages>
+  <!-- start_arg01=1 - get data from WAPRO and write it to MySQL -->
+  <!-- start_arg01=2 - get data from MySQL and write it to .csv -->
+  <start_arg01>2</start_arg01>
+  <send_mail_on_error>true</send_mail_on_error>
+  <send_mail_on_success>true</send_mail_on_success>
+  <send_mail_on_error_to>mposohov@gmail.com</send_mail_on_error_to>
+  <csv_source_ffn>d:\inetpub\ftproot\out\rest.csv</csv_source_ffn>
+  <!-- <csv_out_dir>D:\Bases_1C\Reforma\wapro_imp\</csv_out_dir> -->
+  <csv_out_dir>D:\</csv_out_dir>
+  <send_mail_on_error_to>mposohov@gmail.com</send_mail_on_error_to>
+  <db_conf>
+    <id>1</id>
+    <type>mssql</type>
+    <label>fs01</label>
+    <conn_str>Server=192.168.1.36;Database=WAPRO;User Id=sa; Password =Boxter1123;</conn_str>
+    <qu>
+      <s>SELECT h.ID_DOKUMENTU_HANDLOWEGO
+			FROM DOKUMENT_HANDLOWY AS h
+			WHERE h.ID_TYPU = 1
+			AND h.ID_DOKUMENTU_HANDLOWEGO &gt; {0} ;
+		</s>
+      <s>SELECT 
+			h.ID_PLATNIKA, h.ID_DOKUMENTU_HANDLOWEGO, h.NUMER
+			, FORMAT(cast(h.DATA_WYSTAWIENIA - 36163 as datetime),'yyyy-MM-dd') AS DATA_WYSTAWIENIA
+			, h.FORMA_PLATNOSCI 
+			,FORMAT(cast(h.TERMIN_PLAT - 36163 as datetime),'yyyy-MM-dd') AS TERMIN_PLAT
+			, h.UWAGI, h.PLATNIK_NAZWA, k.NIP, k.KOD_POCZTOWY 
+			, k.MIEJSCOWOSC, k.ULICA_LOKAL, h.WARTOSC_NETTO, h.WARTOSC_BRUTTO 
+			FROM DOKUMENT_HANDLOWY AS h 
+			INNER JOIN KONTRAHENT AS k ON h.ID_PLATNIKA = k.ID_KONTRAHENTA 
+			WHERE h.ID_TYPU = 1 AND h.ID_DOKUMENTU_HANDLOWEGO = {0};
+			</s>
+      <s>SELECT 
+			h.NUMER
+			, aa.INDEKS_KATALOGOWY
+			, aa.NAZWA
+			, pm.ILOSC
+			, pm.CENA_BRUTTO
+			, pm.CENA_NETTO
+			FROM POZYCJA_DOKUMENTU_MAGAZYNOWEGO AS pm
+			INNER JOIN ARTYKUL AS aa ON aa.ID_ARTYKULU = pm.ID_ARTYKULU
+			INNER JOIN DOKUMENT_MAGAZYNOWY AS h ON h.ID_DOK_MAGAZYNOWEGO = pm.ID_DOK_MAGAZYNOWEGO
+			WHERE pm.ID_DOK_HANDLOWEGO =  {0}
+		;
+		</s>
+    </qu>
+    <param>
+      <s>209</s>
+      <s>para2</s>
+    </param>
+  </db_conf>
+  <db_conf>
+    <id>2</id>
+    <type>mysql</type>
+    <label>fs01</label>
+    <conn_str>Server=192.254.233.102; Database=refshop__workdb;user=refshop_mike;password='kacnelbogen';port=3306;</conn_str>
+    <qu>
+      <s>TRUNCATE wapro_doc;</s>
+      <s>INSERT INTO wapro_doc (file_name, file_data) VALUES ('{0}','{1}');</s>
+      <s>mysql3</s>
+    </qu>
+    <param>
+      <s>3</s>
+      <s>para2</s>
+    </param>
+  </db_conf>
+  <db_conf>
+    <id>3</id>
+    <type>mysql</type>
+    <label>fs01</label>
+    <conn_str>Server=192.254.233.102; Database=refshop__workdb;user=refshop_mike;password='kacnelbogen';port=3306;</conn_str>
+    <qu>
+      <s>SELECT w.* FROM wapro_doc AS w WHERE w.id &gt; {0} ORDER BY w.id ASC;</s>
+      <s>SELECT w.* FROM wapro_doc AS w ;</s>
+      <s>mysql3</s>
+    </qu>
+    <param>
+      <s>54</s>
+      <s>para2</s>
+    </param>
+  </db_conf>
+  <maildata>
+    <pop>mail.reformnails.com</pop>
+    <smtp>mail.reformnails.com</smtp>
+    <pop_port>110</pop_port>
+    <smtp_port>25</smtp_port>
+    <user>mp@reformnails.com</user>
+    <pass>23751j</pass>
+    <enablessl>false</enablessl>
+  </maildata>
+  <maildatassl>
+    <pop>gator3218.hostgator.com</pop>
+    <smtp>gator3218.hostgator.com</smtp>
+    <pop_port>995</pop_port>
+    <smtp_port>587</smtp_port>
+    <user>mp@reformnails.com</user>
+    <pass>23751j</pass>
+    <enablessl>true</enablessl>
+  </maildatassl>
+</DBS>

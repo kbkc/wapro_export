@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="wapro_export.Program">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAIABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="wapro_export.CfgRead">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIABACBgoBwIAACAABAAAAAAAAQAAAAIgCCk=</HashCode>
+      <FileName>classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="wapro_export.write_params">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAABABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="wapro_export.dbproc">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIAAAACABAAAAABAAAAAAQBAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="wapro_export.cfg_mail">
+    <Position X="2.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAACAAEAAAAAIAAAAAEAAAABAAAAAAAAQA=</HashCode>
+      <FileName>classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="wapro_export.out_data">
+    <Position X="2.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAgAgAAAAAAAAAAAAAAABBA=</HashCode>
+      <FileName>classes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
