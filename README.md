@@ -31,6 +31,41 @@ is_pass_encrypted = false - not encripted
 run: wapro_export.exe <password for encrypt>
 result: encrypted_arg.txt contains encrypted and decrypted password
 
+ 
+en----------------
+ The program works in 3 modes
+
+--------
+Mode 1. (value <start_arg01> = 1 )
+Run through the task scheduler at the desired frequency
+
+Launch result:
+Picks up new documents from the wapro database and writes to the intermediate database
+
+Details:
+synchronization occurs according to one of the <s>record id</s> parameters (the parameter changes after each import of documents)
+
+--------
+Mode 2. (value <start_arg01> = 2 )
+Run through the task scheduler at the desired frequency
+
+Launch result:
+Picks up documents from the intermediate database and writes to disk in the folder specified in csv_out_dir
+
+Details:
+in our case it looks like this: <csv_out_dir>D:\Bases_1C\Reforma\wapro_imp\</csv_out_dir>
+
+--------
+Mode 3. (requires command line option)
+Required for password encryption if app_cfg.xml uses password encryption
+(is_pass_encrypted = true - encrypted passwords are used, false - not encrypted)
+
+Run from the command line with a parameter (password to be encrypted).
+
+Launch result:
+an encrypted_arg.txt file is created, where the password is written in plain and encrypted form.
+ 
+ 
 ru-----------------
 Программа настраивается через файл app_cfg.xml
 (описания некоторых настроек имеются здесь и в файле app_cfg.xml)
